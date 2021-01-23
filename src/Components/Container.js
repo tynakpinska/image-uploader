@@ -5,7 +5,7 @@ import Button from "./Button";
 const style = {
   width: "50vw",
   height: "auto",
-  margin: "25vh auto",
+  margin: "15vh auto",
   padding: "20px",
   borderRadius: "20px",
   textAlign: "center",
