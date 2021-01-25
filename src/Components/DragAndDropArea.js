@@ -1,5 +1,6 @@
 import React from "react";
 import image from "../img/image.svg";
+import Radium from 'radium';
 
 const styles = {
   box: {
@@ -10,6 +11,9 @@ const styles = {
     border: "1px dashed #97BEF4",
     boxSizing: "border-box",
     borderRadius: "12px",
+    ':hover': {
+      border: "2px solid #97BEF4"
+    }
   },
   paragraph: {
     color: "#BDBDBD",
@@ -18,15 +22,15 @@ const styles = {
   }
 };
 
-const DragAndDrop = () => {
+const DragAndDropArea = props => {
   const displayImage = image => {
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onloadend = () => {
-      const img = document.createElement("img");
-      img.style.width = "100%";
-      img.src = reader.result;
-      document.getElementById("output").appendChild(img);
+      setTimeout(() => {
+        props.setImage(reader.result);
+        props.setIsLoading(false);
+      }, 2000);
     };
   };
 
@@ -46,6 +50,7 @@ const DragAndDrop = () => {
   };
 
   const handleDrop = e => {
+    props.setIsLoading(true);
     e.stopPropagation();
     e.preventDefault();
     dodrop(e);
@@ -65,4 +70,4 @@ const DragAndDrop = () => {
   );
 };
 
-export default DragAndDrop;
+export default Radium(DragAndDropArea);
