@@ -1,6 +1,6 @@
 import React from "react";
 import image from "../img/image.svg";
-import Radium from 'radium';
+import Radium from "radium";
 
 const styles = {
   box: {
@@ -11,32 +11,50 @@ const styles = {
     border: "1px dashed #97BEF4",
     boxSizing: "border-box",
     borderRadius: "12px",
-    ':hover': {
-      border: "2px solid #97BEF4"
-    }
+    ":hover": {
+      border: "2px solid #97BEF4",
+    },
   },
   paragraph: {
     color: "#BDBDBD",
     fontStyle: "Poppins",
     fontSize: "12px",
-  }
+  },
 };
 
-const DragAndDropArea = props => {
-  const displayImage = image => {
+const DragAndDropArea = ({ setImage, setIsLoading }) => {
+  const CLOUDINARY_UPLOAD_PRESET = "pgk0nz6q";
+  const CLOUDINARY_UPLOAD_URL =
+    "https://api.cloudinary.com/v1_1/tynnacloud/upload";
+
+  const uploadImage = image => {
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+    const options = {
+      method: "POST",
+      body: formData,
+    };
+    fetch(CLOUDINARY_UPLOAD_URL, options)
+      .then(res => res.json())
+      .then(res => {
+        setImage(res.secure_url);
+        setIsLoading(false);
+      })
+      .catch(err => console.log(err));
+  };
+
+  const readFile = image => {
     const reader = new FileReader();
     reader.readAsDataURL(image);
     reader.onloadend = () => {
-      setTimeout(() => {
-        props.setImage(reader.result);
-        props.setIsLoading(false);
-      }, 2000);
+        uploadImage(reader.result);
     };
   };
 
   const dodrop = e => {
     const image = e.dataTransfer.items[0].getAsFile();
-    displayImage(image);
+    readFile(image);
   };
 
   const handleDragEnter = e => {
@@ -50,7 +68,7 @@ const DragAndDropArea = props => {
   };
 
   const handleDrop = e => {
-    props.setIsLoading(true);
+    setIsLoading(true);
     e.stopPropagation();
     e.preventDefault();
     dodrop(e);

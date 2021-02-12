@@ -1,7 +1,10 @@
+
+import Radium from 'radium';
+
 const style = {
   img: {
     width: "100%",
-    borderRadius: "20px"
+    borderRadius: "20px",
   },
   button: {
     padding: "10px",
@@ -13,20 +16,31 @@ const style = {
     color: "white",
     textAlign: "center",
     border: "none",
-    ":hover": {
+    ':hover': {
       cursor: "pointer",
     },
   },
 };
 
-const Uploaded = props => {
+const Uploaded = ({ image }) => {
+  const handleClick = () => {
+    const el = document.createElement("textarea");
+    el.value = image;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+  };
+
   return (
     <>
       <h1>Uploaded Successfully!</h1>
-      <img src={props.image} alt="" style={style.img} />
-      <button style={style.button}>Copy Link</button>
+      <img src={image} alt="" style={style.img} />
+      <button style={style.button} onClick={handleClick}>
+        Copy Link
+      </button>
     </>
   );
 };
 
-export default Uploaded;
+export default Radium(Uploaded);
