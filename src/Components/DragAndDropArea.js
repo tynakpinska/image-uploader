@@ -53,6 +53,7 @@ const DragAndDropArea = ({ setImage, setIsLoading }) => {
   };
 
   const dodrop = e => {
+    console.log(e.dataTransfer.items[0])
     const image = e.dataTransfer.items[0].getAsFile();
     readFile(image);
   };

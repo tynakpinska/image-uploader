@@ -40,7 +40,7 @@ const Container = () => {
           <p style={style.p}>File should be Jpeg, Png,...</p>
           <DragAndDropArea setIsLoading={setIsLoading} setImage={setImage} />
           <p>Or</p>
-          <Button />
+          <Button setIsLoading={setIsLoading} setImage={setImage}/>
         </>
       )}
     </div>
