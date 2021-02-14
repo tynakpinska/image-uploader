@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/image-uploader/static/css/main.ea1455b2.chunk.css",
-    "main.js": "/image-uploader/static/js/main.b0cfc781.chunk.js",
-    "main.js.map": "/image-uploader/static/js/main.b0cfc781.chunk.js.map",
+    "main.js": "/image-uploader/static/js/main.88517e70.chunk.js",
+    "main.js.map": "/image-uploader/static/js/main.88517e70.chunk.js.map",
     "runtime-main.js": "/image-uploader/static/js/runtime-main.b8b82c93.js",
     "runtime-main.js.map": "/image-uploader/static/js/runtime-main.b8b82c93.js.map",
     "static/js/2.d7e637fc.chunk.js": "/image-uploader/static/js/2.d7e637fc.chunk.js",
@@ -12,12 +12,13 @@
     "index.html": "/image-uploader/index.html",
     "static/css/main.ea1455b2.chunk.css.map": "/image-uploader/static/css/main.ea1455b2.chunk.css.map",
     "static/js/2.d7e637fc.chunk.js.LICENSE.txt": "/image-uploader/static/js/2.d7e637fc.chunk.js.LICENSE.txt",
-    "static/media/image.3710b8a3.svg": "/image-uploader/static/media/image.3710b8a3.svg"
+    "static/media/image.3710b8a3.svg": "/image-uploader/static/media/image.3710b8a3.svg",
+    "static/media/success-icon.6b6350a4.svg": "/image-uploader/static/media/success-icon.6b6350a4.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.b8b82c93.js",
     "static/js/2.d7e637fc.chunk.js",
     "static/css/main.ea1455b2.chunk.css",
-    "static/js/main.b0cfc781.chunk.js"
+    "static/js/main.88517e70.chunk.js"
   ]
 }
